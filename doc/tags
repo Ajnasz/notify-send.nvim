@@ -1,0 +1,6 @@
+notify-send-configuration	notify-send.txt	/*notify-send-configuration*
+notify-send-functions	notify-send.txt	/*notify-send-functions*
+notify-send-introduction	notify-send.txt	/*notify-send-introduction*
+notify-send.send()	notify-send.txt	/*notify-send.send()*
+notify-send.setup()	notify-send.txt	/*notify-send.setup()*
+notify-send.txt	notify-send.txt	/*notify-send.txt*
