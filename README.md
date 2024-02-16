@@ -7,7 +7,7 @@ This plugin serves as a wrapper for the `notify-send` command, enabling you to s
 You can install the plugin using your preferred Neovim package manager. Here is an example using `vim-plug`:
 
 ```vim
-Plug 'username/notify-send'
+Plug 'Ajnasz/notify-send.nvim'
 ```
 
 Don't forget to run `:PlugInstall` to actually install the plugin.
