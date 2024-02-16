@@ -27,7 +27,7 @@ Available options:
 - 'icon' (`string`?): The path to the icon file to be used in the notifications. If not set, the default icon (neovim) will be used.
 - 'app_name' (`string`?) If not set, "Neovim" will be used
 - 'hint' (`string`?) If not set, 'string:desktop-entry:nvim' will be used
-- 'override_vim_notify' (`bool`?) Set to true to disable setting `vim.notify` to `notify-send.send()`
+- 'override_vim_notify' (`bool`?) Set to `false` to disable setting `vim.notify` to `notify-send.send()`
 
 Example:
 
