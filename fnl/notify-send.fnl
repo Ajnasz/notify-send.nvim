@@ -17,6 +17,7 @@
    :icon "nvim"
    :app_name "Neovim"
    :hint "string:desktop-entry:nvim"
+   :override_vim_notify true
    })
 
 
@@ -33,5 +34,8 @@
     true
     ))
 
-(fn setup [opts] (vim.extend config opts))
+(fn setup [opts]
+  (vim.tbl_extend :force config (or opts {}))
+  (when (. config :override_vim_notify) (tset vim :notify send))
+  )
 { :send send :setup setup }

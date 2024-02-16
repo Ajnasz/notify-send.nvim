@@ -15,7 +15,7 @@ local function get_urgency(level)
     return "normal"
   end
 end
-local config = {command = "notify-send", icon = "nvim", app_name = "Neovim", hint = "string:desktop-entry:nvim"}
+local config = {command = "notify-send", icon = "nvim", app_name = "Neovim", hint = "string:desktop-entry:nvim", override_vim_notify = true}
 local function send(msg, level, opts)
   if not (level == vim.log.levels.OFF) then
     local function _2_(...)
@@ -57,6 +57,12 @@ local function send(msg, level, opts)
   end
 end
 local function setup(opts)
-  return vim.extend(config, opts)
+  vim.tbl_extend("force", config, (opts or {}))
+  if config.override_vim_notify then
+    vim["notify"] = send
+    return nil
+  else
+    return nil
+  end
 end
 return {send = send, setup = setup}
