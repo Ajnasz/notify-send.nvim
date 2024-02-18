@@ -16,41 +16,48 @@ local function get_urgency(level)
   end
 end
 local config = {command = "notify-send", icon = "nvim", app_name = "Neovim", hint = "string:desktop-entry:nvim", override_vim_notify = true}
+local function on_cmd_exit(opts)
+  if not (0 == opts.code) then
+    return error(opts.stderr)
+  else
+    return nil
+  end
+end
 local function send(msg, level, opts)
   if not (level == vim.log.levels.OFF) then
-    local function _2_(...)
-      local t_3_ = opts
-      if (nil ~= t_3_) then
-        t_3_ = t_3_.command
+    local function _3_(...)
+      local t_4_ = opts
+      if (nil ~= t_4_) then
+        t_4_ = t_4_.command
       else
       end
-      return t_3_
+      return t_4_
     end
-    local function _5_(...)
-      local t_6_ = opts
-      if (nil ~= t_6_) then
-        t_6_ = t_6_.icon
+    local function _6_(...)
+      local t_7_ = opts
+      if (nil ~= t_7_) then
+        t_7_ = t_7_.icon
       else
       end
-      return t_6_
+      return t_7_
     end
-    local function _8_(...)
-      local t_9_ = opts
-      if (nil ~= t_9_) then
-        t_9_ = t_9_.app_name
+    local function _9_(...)
+      local t_10_ = opts
+      if (nil ~= t_10_) then
+        t_10_ = t_10_.app_name
       else
       end
-      return t_9_
+      return t_10_
     end
-    local function _11_(...)
-      local t_12_ = opts
-      if (nil ~= t_12_) then
-        t_12_ = t_12_.hint
+    local function _12_(...)
+      local t_13_ = opts
+      if (nil ~= t_13_) then
+        t_13_ = t_13_.hint
       else
       end
-      return t_12_
+      return t_13_
     end
-    vim.system({(_2_() or config.command), msg, "--urgency", get_urgency(level), "--icon", (_5_() or config.icon), "--app-name", (_8_() or config.app_name), "--hint", (_11_() or config.hint)})
+    vim.system({(_3_() or config.command), msg, "--urgency", get_urgency(level), "--icon", (_6_() or config.icon), "--app-name", (_9_() or config.app_name), "--hint", (_12_() or config.hint)}, {text = true}, on_cmd_exit)
     return true
   else
     return nil

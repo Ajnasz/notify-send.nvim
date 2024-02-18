@@ -20,6 +20,7 @@
    :override_vim_notify true
    })
 
+(fn on-cmd-exit [opts] (when (not (= 0 (. opts :code))) (error opts.stderr)))
 
 (fn send [msg level opts]
   (when (not (= level vim.log.levels.OFF))
@@ -30,7 +31,7 @@
        "--icon" (or (?. opts :icon) (. config :icon))
        "--app-name" (or (?. opts :app_name) (. config :app_name))
        "--hint" (or (?. opts :hint) (. config :hint))
-       ])
+       ] { :text true } on-cmd-exit)
     true
     ))
 
