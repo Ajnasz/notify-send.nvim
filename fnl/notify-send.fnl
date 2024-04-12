@@ -26,7 +26,8 @@
   (when (not (= level vim.log.levels.OFF))
     (vim.system
       [
-       (or (?. opts :command) (. config :command)) msg
+       (or (?. opts :command) (. config :command))
+       msg
        "--urgency" (get-urgency level)
        "--icon" (or (?. opts :icon) (. config :icon))
        "--app-name" (or (?. opts :app_name) (. config :app_name))
